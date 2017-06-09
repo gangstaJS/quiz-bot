@@ -1,0 +1,28 @@
+{
+  "name": "quiz-bot",
+  "version": "1.0.0",
+  "description": "74gjjKUkQiLvus1eYsywpqS",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "export MICROSOFT_APP_ID=8cacaea0-5f11-4706-88c3-5c203ebabf7a&& export MICROSOFT_APP_PASSWORD=74gjjKUkQiLvus1eYsywpqS &&nodemon -L bot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gangstaJS/quiz-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gangstaJS/quiz-bot/issues"
+  },
+  "homepage": "https://github.com/gangstaJS/quiz-bot#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "botbuilder": "^3.8.4",
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

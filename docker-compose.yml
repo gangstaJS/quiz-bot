@@ -1,0 +1,6 @@
+quiz-bot-oz:
+  build: .
+  volumes:
+    - ".:/src"
+  ports:
+    - "8180:8180"
