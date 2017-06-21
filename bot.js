@@ -35,15 +35,19 @@ function initApp(questions) {
 	const avalaibleComands = {
 		'score': 'showScore',
 		'skip': 'skip',
-		'tip': 'tip'
+		'tip': 'tip',
+		'list': 'list',
 	};
 
 	class CommandMachine {
 		static showScore(s) {
 			return score().then(r => {
-      	r.forEach(st => {
-      		s.send(`__${st.name}__: _${st.score}_`);
+				let sc = '';
+      	r.forEach((st, i) => {
+      		sc += `${i+1}. (bronzemedal) __${st.name}__: _${st.score}_\n\n`;
       	})
+
+      	s.send(sc);
       });
 		}
 
@@ -63,6 +67,18 @@ function initApp(questions) {
 			return new Promise((resolve, reject) => {
 				setTimeout(() => {
 					s.send(questions[currentIndexQuestion].answer);
+				}, 0);
+			});
+		}
+
+		static list(s) {
+			return new Promise((resolve, reject) => {
+				setTimeout(() => {
+					let str = '';
+					Object.keys(avalaibleComands).forEach((key, i) => {
+						str += `${i+1}. ${key}\n\n`;
+					})
+					s.send(str);
 				}, 0);
 			});
 		}
@@ -103,7 +119,7 @@ function initApp(questions) {
 				tryes = 10;
 
 				setPoint(session.message.user.id, session.message.user.name, 1).then(r => {
-					session.send(session.message.user.name+' _+1_ очко ('+r.score+')');
+					session.send(session.message.user.name+' _+1_ очко (like) ('+r.score+')');
 					session.send(questions[currentIndexQuestion].question);
 				});
 
@@ -121,7 +137,7 @@ function initApp(questions) {
 
 				tryes--;
 
-				session.send(session.message.user.name+' не верно ('+ tryes +') попыток осталось');
+				session.send(session.message.user.name+' не верно (n) ('+ tryes +') попыток осталось');
 			}
 		} else {
 			currentIndexQuestion++;
@@ -136,7 +152,7 @@ function initApp(questions) {
 	
 	console.log('Starting complited');
 
-	app.listen(8180);
+	app.listen(8019);
 }
 
 function prepareMsg(msg) {

@@ -10,6 +10,6 @@ ADD ./package.json /src/package.json
 
 RUN npm install
 
-EXPOSE 8180
+EXPOSE 8019
 
 CMD npm start

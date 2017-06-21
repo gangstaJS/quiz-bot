@@ -3,4 +3,4 @@ quiz-bot-oz:
   volumes:
     - ".:/src"
   ports:
-    - "8180:8180"
+    - "8019:8019"
